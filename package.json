@@ -1,0 +1,22 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000C\u0000r\u0000o\u0000w\u0000d\u0000E\u0000s\u0000t\u0000a\u0000t\u0000e\u0000-\u0000B\u0000a\u0000c\u0000k\u0000E\u0000n\u0000d\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "start": "index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.20.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.1",
+    "node-mailer": "^0.1.1",
+    "nodemon": "^3.1.4"
+  }
+}
