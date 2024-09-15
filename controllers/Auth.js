@@ -261,12 +261,14 @@ exports.login = async (req, res) => {
       const cookieConfig = {
         expires: new Date(Date.now() + (3 * 24 * 60 * 60 * 1000))
       }
-      res.cookie("token", token).status(200).json({
-        sucess: true,
+      res.cookie("token", token, cookieConfig).status(200).json({
+        success: true,
         message: "Login Sucessful",
         token: token,
         user: user
       })
+
+      console.log('Cookie Set Success');
 
     } else {
 
