@@ -264,9 +264,10 @@ exports.login = async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
-        domain: process.env.FRONT_END_URL
+        domain: 'vercel.app'
       }
 
+      res.header('Access-Control-Allow-Origin', process.env.FRONT_END_URL);
       res.cookie("token", token, cookieConfig).status(200).json({
         success: true,
         message: "Login successful",
