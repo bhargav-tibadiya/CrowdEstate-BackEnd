@@ -64,7 +64,7 @@ exports.sendotp = async (req, res) => {
 
     // Return a Successful Response
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "OTP Sent Successfully ",
       otp: otp
     })
@@ -72,7 +72,7 @@ exports.sendotp = async (req, res) => {
   } catch (error) {
 
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Sending OTP",
     })
     console.log("Error While Sending OTP. \nCheck Auth.js File #BE004");
@@ -188,7 +188,7 @@ exports.signup = async (req, res) => {
 
     // Return Response
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "User Registered Successfully ",
       user: user
     })
@@ -196,7 +196,7 @@ exports.signup = async (req, res) => {
   } catch (error) {
 
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Creating Account",
     })
 
@@ -263,7 +263,7 @@ exports.login = async (req, res) => {
       }
       res.cookie("token", token, cookieConfig).status(200).json({
         success: true,
-        message: "Login Sucessful",
+        message: "Login successful",
         token: token,
         user: user
       })
@@ -273,7 +273,7 @@ exports.login = async (req, res) => {
     } else {
 
       res.status(401).json({
-        sucess: false,
+        success: false,
         message: "Password is Incorrect",
       })
 
@@ -283,7 +283,7 @@ exports.login = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Login",
     })
 
