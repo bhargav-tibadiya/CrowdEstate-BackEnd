@@ -64,7 +64,7 @@ exports.sendotp = async (req, res) => {
 
     // Return a Successful Response
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "OTP Sent Successfully ",
       otp: otp
     })
@@ -72,7 +72,7 @@ exports.sendotp = async (req, res) => {
   } catch (error) {
 
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Sending OTP",
     })
     console.log("Error While Sending OTP. \nCheck Auth.js File #BE004");
@@ -103,10 +103,10 @@ exports.signup = async (req, res) => {
     } = req.body
 
     // Validate Data
-    const isDataMissing = (!username || !firstName || !lastName || !email || !password || !confirmPassword || !role || !contactNumber || !isVerified || !otp)
+    const isDataMissing = (!username || !firstName || !lastName || !email || !password || !confirmPassword || !contactNumber || !otp)
 
     if (isDataMissing) {
-      console.log("Password and Confirm Passwords noth Matching \nCheck Auth.js File #BE004");
+      console.log("Some Data are Missing \nCheck Auth.js File #BE004");
       return res.status(403).json({
         success: false,
         message: "Please Fill All Fields, Some Data are Missing",
@@ -114,7 +114,7 @@ exports.signup = async (req, res) => {
     }
 
     // Match if Both Password Match
-    if (password !== confirmPassword) {
+    if (password != confirmPassword) {
 
       console.log("Password and Confirm Passwords noth Matching \nCheck Auth.js File #BE005");
 
@@ -188,7 +188,7 @@ exports.signup = async (req, res) => {
 
     // Return Response
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "User Registered Successfully ",
       user: user
     })
@@ -196,7 +196,7 @@ exports.signup = async (req, res) => {
   } catch (error) {
 
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Creating Account",
     })
 
@@ -263,7 +263,7 @@ exports.login = async (req, res) => {
       }
       res.cookie("token", token, cookieConfig).status(200).json({
         success: true,
-        message: "Login Sucessful",
+        message: "Login successful",
         token: token,
         user: user
       })
@@ -273,7 +273,7 @@ exports.login = async (req, res) => {
     } else {
 
       res.status(401).json({
-        sucess: false,
+        success: false,
         message: "Password is Incorrect",
       })
 
@@ -283,7 +283,7 @@ exports.login = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Login",
     })
 

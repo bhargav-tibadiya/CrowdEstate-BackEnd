@@ -48,7 +48,7 @@ exports.auth = async (req, res, next) => {
   } catch (error) {
 
     res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Error While Authentication",
     })
 
