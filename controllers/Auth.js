@@ -103,10 +103,10 @@ exports.signup = async (req, res) => {
     } = req.body
 
     // Validate Data
-    const isDataMissing = (!username || !firstName || !lastName || !email || !password || !confirmPassword || !role || !contactNumber || !isVerified || !otp)
+    const isDataMissing = (!username || !firstName || !lastName || !email || !password || !confirmPassword || !contactNumber || !otp)
 
     if (isDataMissing) {
-      console.log("Password and Confirm Passwords noth Matching \nCheck Auth.js File #BE004");
+      console.log("Some Data are Missing \nCheck Auth.js File #BE004");
       return res.status(403).json({
         success: false,
         message: "Please Fill All Fields, Some Data are Missing",
@@ -114,7 +114,7 @@ exports.signup = async (req, res) => {
     }
 
     // Match if Both Password Match
-    if (password !== confirmPassword) {
+    if (password != confirmPassword) {
 
       console.log("Password and Confirm Passwords noth Matching \nCheck Auth.js File #BE005");
 

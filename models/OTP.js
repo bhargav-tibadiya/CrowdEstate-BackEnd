@@ -48,16 +48,16 @@ const sendVerifcationEmail = async (email, otp) => {
 // --> So using pre to do some task before saving the entry to DB  <--
 otpSchema.pre("save", async function (next) {
   try {
-    
+
     await sendVerifcationEmail(this.email, this.otp);
     next();
 
   } catch (error) {
-    
+
     console.log("Error While Sending Verification Mail. \nCheck OTP.js File #BE003.2");
     console.error(error.message);
     next(error);
-    
+
   }
 });
 
