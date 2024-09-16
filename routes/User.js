@@ -9,8 +9,6 @@ const {
   sendotp,
 } = require("../controllers/Auth")
 
-const { auth } = require("../middlewares/auth")
-
 
 // Route for user login
 router.post("/login", login)
