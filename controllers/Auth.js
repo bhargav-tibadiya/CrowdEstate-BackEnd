@@ -259,12 +259,14 @@ exports.login = async (req, res) => {
 
       // Generate cookie and Send Response
       const cookieConfig = {
+        path: '/',
         expires: new Date(Date.now() + (3 * 24 * 60 * 60 * 1000)),
         httpOnly: true,
         secure: true,
         sameSite: 'None',
+        domain: process.env.FRONT_END_URL
       }
-      
+
       res.cookie("token", token, cookieConfig).status(200).json({
         success: true,
         message: "Login successful",
