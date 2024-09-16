@@ -19,6 +19,7 @@ const database = require("./config/database");
 // --> Creating Express App <--
 const app = express();
 const PORT = process.env.PORT || 4000;
+const URL = process.env.FRONT_END_URL;
 
 
 // --> database connect <--
@@ -30,7 +31,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: URL,
     credentials: true,
   })
 )
