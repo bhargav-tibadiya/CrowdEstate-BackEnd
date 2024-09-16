@@ -264,6 +264,7 @@ exports.login = async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
+        domain: process.env.FRONT_END_URL
       }
 
       res.cookie("token", token, cookieConfig).status(200).json({
