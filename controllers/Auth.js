@@ -264,7 +264,7 @@ exports.login = async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
-        domain: 'vercel.app'
+        domain: '.crowdestateproject.vercel.app'
       }
 
       res.header('Access-Control-Allow-Origin', process.env.FRONT_END_URL);
