@@ -264,7 +264,7 @@ exports.login = async (req, res) => {
         user: user
       })
 
-      console.log('Cookie Set Success');
+      console.log('Cookie Sent Successfully');
 
     } else {
 
