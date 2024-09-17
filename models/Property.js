@@ -22,13 +22,36 @@ const propertySchema = new mongoose.Schema({
 
   category: {
     type: String,
-    enum: ['Residential', 'Commercial', 'Land', 'Industrial'],
+    enum: [
+      'Available',
+      'Sold',
+      'Under Offer',
+      'Rented',
+      'Off Market'
+    ],  
     required: true,
   },
 
   tags: {
     type: [String],
-    enum: ['Apartment', 'Villa', 'Office', 'Warehouse', 'Plot', 'Others'],
+    enum: [
+      'Luxury',
+      'Affordable',
+      'New',
+      'Under Construction',
+      'Fully Furnished',
+      'Pet Friendly',
+      'Near School',
+      'Near Metro',
+      'Gated Community',
+      'Eco-Friendly',
+      'Smart Home',
+      'Waterfront',
+      'Mountain View',
+      'City Center',
+      'Garden',
+      'Swimming Pool'
+    ]
   },
 
   images: {
