@@ -28,7 +28,7 @@ const propertySchema = new mongoose.Schema({
       'Under Offer',
       'Rented',
       'Off Market'
-    ],  
+    ],
     required: true,
   },
 
@@ -54,7 +54,7 @@ const propertySchema = new mongoose.Schema({
     ]
   },
 
-  images: {
+  image: {
     type: String,
     required: true,
   },
@@ -68,13 +68,6 @@ const propertySchema = new mongoose.Schema({
   isCollaborative: {
     type: Boolean,
     required: true,
-  },
-
-  maxContributors: {
-    type: Number,
-    required: function () {
-      return this.isCollaborative;
-    }
   },
 
   allContributors: {

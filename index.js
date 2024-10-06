@@ -2,9 +2,11 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const fileUpload = require('express-fileupload');
 
 // --> Import the required routers <--
 const userRoutes = require("./routes/User");
+const uploadRoutes = require("./routes/FileUpload");
 
 
 // --> Setting Up the Environment Variables <--
@@ -36,8 +38,20 @@ app.use(
   })
 )
 
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}));
+
+
+// --> connecting to cloudinary <--
+const cloudinary = require('./config/cloudinary')
+cloudinary.connect()
+
+
 // --> Applying Routes <--
 app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/upload", uploadRoutes);
 
 
 // --> default route <--
