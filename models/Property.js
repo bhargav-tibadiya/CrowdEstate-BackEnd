@@ -60,7 +60,7 @@ const propertySchema = new mongoose.Schema({
   },
 
   listedBy: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
@@ -71,7 +71,7 @@ const propertySchema = new mongoose.Schema({
   },
 
   allContributors: {
-    type: [Schema.Types.ObjectId],
+    type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
     default: []
   },
