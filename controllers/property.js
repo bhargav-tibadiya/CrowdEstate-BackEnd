@@ -80,3 +80,41 @@ exports.addProperty = async (req, res) => {
   }
 
 }
+
+exports.showProperties = async (req, res) => {
+
+  try {
+
+    const { userId } = req.body
+
+    if (!userId) {
+      console.log("Some Data are Missing \nCheck Property.js File #BE020");
+      return res.status(403).json({
+        success: false,
+        message: "Please Fill All Fields, Some Data are Missing",
+      })
+    }
+
+    const response = await Property.find({ listedBy: userId });
+    console.log('response', response)
+
+    res.status(200).json({
+      success: true,
+      message: "Property Added SucessFully",
+      properties: response
+    })
+
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: "Error While fetching all Property",
+    })
+    console.log("Error While fetching all Property. \nCheck Auth.js File #BE019");
+    console.error(error.message);
+    throw error;
+
+  }
+
+}
