@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 // --> Import the required routers <--
 const userRoutes = require("./routes/User");
 const uploadRoutes = require("./routes/FileUpload");
+const propertyRoutes = require("./routes/Property");
 
 
 // --> Setting Up the Environment Variables <--
@@ -52,6 +53,7 @@ cloudinary.connect()
 // --> Applying Routes <--
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/upload", uploadRoutes);
+app.use("/api/v1/property", propertyRoutes);
 
 
 // --> default route <--
