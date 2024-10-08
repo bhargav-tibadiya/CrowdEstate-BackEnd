@@ -3,7 +3,8 @@ const router = express.Router();
 
 const {
   addProperty,
-  showProperties
+  showProperties,
+  fetchAllProperties
 } = require('../controllers/property');
 
 // define API Routes
@@ -11,6 +12,7 @@ const {
 // Route for adding Propert
 router.post('/addproperty', addProperty)
 router.post('/showproperties', showProperties)
+router.post('/fetchallproperties', fetchAllProperties)
 
 
 module.exports = router;

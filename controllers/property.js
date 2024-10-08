@@ -18,7 +18,7 @@ exports.addProperty = async (req, res) => {
     const isDataMissing = (!address || !bathrooms || !bedrooms || !category || !city || !coordinates || !country || !description || !image || !isCollaborative || !listedBy || !name || !price || !size || !state || !tags || !yearBuilt)
 
     if (isDataMissing) {
-      console.log("Some Data are Missing \nCheck Auth.js File #BE017");
+      console.log("Some Data are Missing \nCheck Property.js File #BE017");
       return res.status(403).json({
         success: false,
         message: "Please Fill All Fields, Some Data are Missing",
@@ -73,7 +73,7 @@ exports.addProperty = async (req, res) => {
       success: false,
       message: "Error While Adding Property",
     })
-    console.log("Error While Adding Property. \nCheck Auth.js File #BE018");
+    console.log("Error While Adding Property. \nCheck Property.js File #BE018");
     console.error(error.message);
     throw error;
 
@@ -111,7 +111,35 @@ exports.showProperties = async (req, res) => {
       success: false,
       message: "Error While fetching all Property",
     })
-    console.log("Error While fetching all Property. \nCheck Auth.js File #BE019");
+    console.log("Error While fetching all Property. \nCheck Property.js File #BE019");
+    console.error(error.message);
+    throw error;
+
+  }
+
+}
+
+exports.fetchAllProperties = async (req, res) => {
+
+  try {
+
+    const response = await Property.find();
+    console.log('response', response)
+
+    res.status(200).json({
+      success: true,
+      message: "All Prroperties Fetched Successfully",
+      properties: response
+    })
+
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: "Error While fetching all Property",
+    })
+    console.log("Error While fetching all Property. \nCheck Property.js File #BE021");
     console.error(error.message);
     throw error;
 
