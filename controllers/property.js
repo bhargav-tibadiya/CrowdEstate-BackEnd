@@ -146,3 +146,36 @@ exports.fetchAllProperties = async (req, res) => {
   }
 
 }
+
+exports.getProperty = async (req, res) => {
+
+  try {
+
+    console.log('req.body', req.body)
+
+    const { id } = req.body
+
+    console.log('id', id)
+
+    const response = await Property.find({ _id: id });
+    console.log('response', response)
+
+    res.status(200).json({
+      success: true,
+      message: "Properties Fetched Successfully",
+      property: response
+    })
+
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: "Error While fetching Property",
+    })
+    console.log("Error While fetching Property. \nCheck Property.js File #BE022");
+    console.error(error.message);
+    throw error;
+
+  }
+}
