@@ -179,3 +179,61 @@ exports.getProperty = async (req, res) => {
 
   }
 }
+
+exports.changeOwner = async (req, res) => {
+  try {
+    const { propertyId, newOwnerId } = req.body;
+
+    console.log('propertyId', propertyId)
+    console.log('newOwnerId', newOwnerId)
+
+    // Validate required fields
+    if (!propertyId || !newOwnerId) {
+      return res.status(400).json({
+        success: false,
+        message: "Property ID and new owner ID are required",
+      });
+    }
+
+    // Fetch the property by ID
+    const property = await Property.findById(propertyId).populate('listedBy');
+
+    if (!property) {
+      return res.status(404).json({
+        success: false,
+        message: "Property not found",
+      });
+    }
+
+    // Check if the new owner is already the current owner
+    console.log('property.listedBy._id', property.listedBy._id)
+    console.log('newOwnerId', newOwnerId)
+
+    if (property.listedBy._id.toString() === newOwnerId) {
+      return res.status(400).json({
+        success: false,
+        message: "User is already the owner of this property",
+      });
+    }
+
+    // Update the listedBy field to the new owner ID
+    property.listedBy = newOwnerId;
+    await property.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Owner changed successfully",
+      property,
+    });
+
+  } catch (error) {
+    console.error("Error while changing property owner", error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Error while changing property owner",
+    });
+
+    throw error;
+  }
+};

@@ -5,7 +5,8 @@ const {
   addProperty,
   showProperties,
   fetchAllProperties,
-  getProperty
+  getProperty,
+  changeOwner
 } = require('../controllers/property');
 
 // define API Routes
@@ -15,6 +16,7 @@ router.post('/addproperty', addProperty)
 router.post('/showproperties', showProperties)
 router.post('/fetchallproperties', fetchAllProperties)
 router.post('/getproperty', getProperty)
+router.post('/changeowner', changeOwner)
 
 
 module.exports = router;
