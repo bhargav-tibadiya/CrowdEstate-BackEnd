@@ -1,7 +1,7 @@
 // --> Importing Required Models <--
 const User = require('../models/User')
 const Property = require('../models/Property')
-const nodeMailer = require('node-mailer')
+
 
 
 // --> Setting Up the Environment Variables <--
