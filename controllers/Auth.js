@@ -318,3 +318,31 @@ exports.findUser = async (req, res) => {
 
   }
 }
+
+
+exports.fetchAllUser = async (req, res) => {
+  try {
+
+
+    const response = await User.find();
+    console.log('response', response)
+
+    res.status(200).json({
+      success: true,
+      message: "User Fetched Successfully",
+      user: response
+    })
+
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: "Error While fetching User",
+    })
+    console.log("Error While fetching User. \nCheck Auth.js File #BE028");
+    console.error(error.message);
+    throw error;
+
+  }
+}

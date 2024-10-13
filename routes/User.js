@@ -7,7 +7,8 @@ const {
   login,
   signup,
   sendotp,
-  findUser
+  findUser,
+  fetchAllUser
 } = require("../controllers/Auth")
 
 
@@ -22,6 +23,7 @@ router.post("/sendotp", sendotp)
 
 // Route for Getting User info
 router.post("/getuser", findUser)
+router.post("/getalluser", fetchAllUser)
 
 
 // Export the router for use in the main application
