@@ -3,7 +3,8 @@ const router = express.Router();
 
 const {
   purchaseProperty,
-  addTransaction
+  addTransaction,
+  fetchTransactions
 } = require('../controllers/purchase');
 
 // define API Routes
@@ -11,5 +12,6 @@ const {
 // Route for adding Propert
 router.post('/buy', purchaseProperty)
 router.post('/addtransaction', addTransaction)
+router.post('/alltransaction', fetchTransactions)
 
 module.exports = router;

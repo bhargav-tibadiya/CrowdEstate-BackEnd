@@ -86,3 +86,30 @@ exports.addTransaction = async (req, res) => {
 
   }
 }
+
+exports.fetchTransactions = async (req, res) => {
+  try {
+
+    const response = await Transaction.find()
+
+    console.log('response', response)
+
+    res.status(200).json({
+      success: true,
+      message: "All Transaction Fetched Successfully",
+      response: response
+    })
+
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: "Error While All Transaction",
+    })
+    console.log("Error While All Transaction. \nCheck Purchase.js File #BE027");
+    console.error(error.message);
+    throw error;
+
+  }
+}
